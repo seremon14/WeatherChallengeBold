@@ -7,4 +7,3 @@ data class ForecastState(
     val isLoading: Boolean = false,
     val error: String? = null
 )
-

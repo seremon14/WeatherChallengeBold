@@ -5,4 +5,3 @@ data class WeatherCondition(
     val icon: String,
     val code: Int
 )
-

@@ -9,4 +9,3 @@ data class Location(
     val lon: Double,
     val url: String
 )
-

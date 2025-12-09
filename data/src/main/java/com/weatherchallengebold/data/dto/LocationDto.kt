@@ -1,6 +1,5 @@
 package com.weatherchallengebold.data.dto
 
-import com.google.gson.annotations.SerializedName
 import com.weatherchallengebold.domain.model.Location
 
 data class LocationDto(
@@ -24,4 +23,3 @@ data class LocationDto(
         )
     }
 }
-

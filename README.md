@@ -2,6 +2,18 @@
 
 Aplicación móvil Android desarrollada para consultar el clima actual y pronóstico del tiempo de diferentes ubicaciones utilizando la API de WeatherAPI.
 
+## Capturas de Pantalla
+
+### Pantalla de Búsqueda
+<img src="screenshots/search_screen.png" alt="Pantalla de Búsqueda" width="300" />
+
+La pantalla de búsqueda permite buscar ubicaciones en tiempo real mientras el usuario escribe.
+
+### Pantalla de Pronóstico
+<img src="screenshots/forecast_screen.png" alt="Pantalla de Búsqueda" width="300" />
+
+La pantalla de pronóstico muestra el clima actual y el pronóstico para los próximos 3 días.
+
 ## Características
 
 - Búsqueda de ubicaciones en tiempo real mientras el usuario escribe

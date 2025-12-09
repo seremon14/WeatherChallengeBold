@@ -9,4 +9,3 @@ data class WeatherForecast(
 data class Forecast(
     val forecastday: List<ForecastDay>
 )
-

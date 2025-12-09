@@ -24,4 +24,3 @@ data class HourForecast(
     val humidity: Int,
     val windKph: Double
 )
-

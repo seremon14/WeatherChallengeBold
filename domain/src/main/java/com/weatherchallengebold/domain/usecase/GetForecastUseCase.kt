@@ -14,4 +14,3 @@ class GetForecastUseCase @Inject constructor(
         return repository.getForecast(locationName, days)
     }
 }
-

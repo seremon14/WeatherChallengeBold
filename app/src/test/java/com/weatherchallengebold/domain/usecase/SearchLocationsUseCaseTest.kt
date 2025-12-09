@@ -51,4 +51,3 @@ class SearchLocationsUseCaseTest {
         assertEquals(exception, result.exceptionOrNull())
     }
 }
-

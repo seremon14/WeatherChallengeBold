@@ -7,4 +7,3 @@ interface WeatherRepository {
     suspend fun searchLocations(query: String): Result<List<Location>>
     suspend fun getForecast(locationName: String, days: Int): Result<WeatherForecast>
 }
-

@@ -40,16 +40,13 @@ class ForecastViewModel @Inject constructor(
                     }
                 },
                 onFailure = { exception ->
-                    // Loggear el error real
                     ErrorHandler.logError(
                         "ForecastViewModel",
                         "Error al cargar pronóstico para: $locationName",
                         exception
                     )
-                    
-                    // Obtener mensaje de error apropiado para el usuario
                     val errorMessage = ErrorHandler.getErrorMessage(exception)
-                    
+
                     _state.update {
                         it.copy(
                             isLoading = false,

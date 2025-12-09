@@ -19,4 +19,3 @@ interface WeatherApiService {
         @Query("days") days: Int
     ): WeatherForecastDto
 }
-

@@ -64,4 +64,3 @@ class GetForecastUseCaseTest {
         assertEquals(exception, result.exceptionOrNull())
     }
 }
-

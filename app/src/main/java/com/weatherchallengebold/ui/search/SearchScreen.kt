@@ -26,6 +26,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,7 +63,6 @@ fun SearchScreen(
         OutlinedTextField(
             value = state.query,
             onValueChange = { newValue ->
-                // Filtrar caracteres especiales para prevenir vulnerabilidades
                 val filteredValue = InputValidator.filterValidCharacters(newValue)
                 viewModel.onSearchQueryChanged(filteredValue)
             },
@@ -74,7 +74,9 @@ fun SearchScreen(
                     contentDescription = "Buscar"
                 )
             },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .testTag("search_text_field"),
             singleLine = true,
             shape = RoundedCornerShape(12.dp),
             colors = OutlinedTextFieldDefaults.colors(

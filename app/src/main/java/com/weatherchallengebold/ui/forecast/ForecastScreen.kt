@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.weatherchallengebold.util.DateFormatter
 
 @Composable
 fun ForecastScreen(
@@ -40,14 +41,16 @@ fun ForecastScreen(
                 CircularProgressIndicator()
             }
         }
+
         state.error != null -> {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = state.error ?: "Error desconocido")
+                Text(text = state.error ?: "Unknown error")
             }
         }
+
         state.forecast != null -> {
             ForecastContent(forecast = state.forecast!!)
         }
@@ -60,13 +63,11 @@ fun ForecastContent(forecast: com.weatherchallengebold.domain.model.WeatherForec
     val isLandscape = configuration.screenWidthDp > configuration.screenHeightDp
 
     if (isLandscape) {
-        // Layout horizontal: información principal a la izquierda, pronóstico a la derecha
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            // Columna izquierda: información principal
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -82,7 +83,6 @@ fun ForecastContent(forecast: com.weatherchallengebold.domain.model.WeatherForec
                 CurrentWeatherCard(current = forecast.current)
             }
 
-            // Columna derecha: pronóstico de 3 días
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -97,7 +97,7 @@ fun ForecastContent(forecast: com.weatherchallengebold.domain.model.WeatherForec
                 LazyColumn {
                     items(forecast.forecast.forecastday) { day ->
                         ForecastDayCard(
-                            date = day.date,
+                            date = DateFormatter.formatForecastDate(day.date),
                             avgTemp = day.day.avgtempC,
                             condition = day.day.condition,
                             modifier = Modifier
@@ -131,7 +131,7 @@ fun ForecastContent(forecast: com.weatherchallengebold.domain.model.WeatherForec
             LazyRow {
                 items(forecast.forecast.forecastday) { day ->
                     ForecastDayCard(
-                        date = day.date,
+                        date = DateFormatter.formatForecastDate(day.date),
                         avgTemp = day.day.avgtempC,
                         condition = day.day.condition,
                         modifier = Modifier.padding(horizontal = 8.dp)
@@ -149,10 +149,9 @@ fun CurrentWeatherCard(current: com.weatherchallengebold.domain.model.CurrentWea
             .fillMaxWidth()
             .padding(bottom = 16.dp)
     ) {
-        Row (
+        Row(
             modifier = Modifier.padding(16.dp)
         ) {
-
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -167,7 +166,7 @@ fun CurrentWeatherCard(current: com.weatherchallengebold.domain.model.CurrentWea
                 Text(text = "Viento: ${current.windKph} km/h")
             }
 
-            Column (
+            Column(
                 modifier = Modifier.weight(1f)
             ) {
                 AsyncImage(
@@ -216,4 +215,3 @@ fun ForecastDayCard(
         }
     }
 }
-

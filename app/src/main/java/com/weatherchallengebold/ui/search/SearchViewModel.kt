@@ -47,16 +47,13 @@ class SearchViewModel @Inject constructor(
                     }
                 },
                 onFailure = { exception ->
-                    // Loggear el error real
                     ErrorHandler.logError(
                         "SearchViewModel",
                         "Error al buscar ubicaciones: $query",
                         exception
                     )
-                    
-                    // Obtener mensaje de error apropiado para el usuario
                     val errorMessage = ErrorHandler.getErrorMessage(exception)
-                    
+
                     _state.update {
                         it.copy(
                             locations = emptyList(),
@@ -69,4 +66,3 @@ class SearchViewModel @Inject constructor(
         }
     }
 }
-

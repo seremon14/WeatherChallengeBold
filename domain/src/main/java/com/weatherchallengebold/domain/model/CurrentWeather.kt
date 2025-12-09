@@ -7,4 +7,3 @@ data class CurrentWeather(
     val humidity: Int,
     val windKph: Double
 )
-

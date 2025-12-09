@@ -14,4 +14,3 @@ class SearchLocationsUseCase @Inject constructor(
         return repository.searchLocations(query)
     }
 }
-
