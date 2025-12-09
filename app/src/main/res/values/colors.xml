@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splash_background">#1976D2</color>
+    <color name="splash_background">#FFCA28</color>
     <color name="white">#FFFFFF</color>
-    <color name="ic_launcher_background">#1976D2</color>
-    <color name="sky_blue_primary">#1976D2</color>
+    <color name="ic_launcher_background">#FFCA28</color>
+    <color name="teal_blue_primary">#26A69A</color>
     <color name="cloud_grey_secondary">#546E7A</color>
-    <color name="sunset_orange_accent">#FF6F00</color>
+    <color name="warm_orange_accent">#FFB300</color>
 </resources>
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.weatherchallengebold.domain.usecase.GetForecastUseCase
+import com.weatherchallengebold.util.ErrorHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -39,10 +40,20 @@ class ForecastViewModel @Inject constructor(
                     }
                 },
                 onFailure = { exception ->
+                    // Loggear el error real
+                    ErrorHandler.logError(
+                        "ForecastViewModel",
+                        "Error al cargar pronóstico para: $locationName",
+                        exception
+                    )
+                    
+                    // Obtener mensaje de error apropiado para el usuario
+                    val errorMessage = ErrorHandler.getErrorMessage(exception)
+                    
                     _state.update {
                         it.copy(
                             isLoading = false,
-                            error = exception.message ?: "Error al cargar el pronóstico"
+                            error = errorMessage
                         )
                     }
                 }

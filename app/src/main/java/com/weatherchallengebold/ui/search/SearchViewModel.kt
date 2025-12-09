@@ -3,6 +3,7 @@ package com.weatherchallengebold.ui.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.weatherchallengebold.domain.usecase.SearchLocationsUseCase
+import com.weatherchallengebold.util.ErrorHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -46,11 +47,21 @@ class SearchViewModel @Inject constructor(
                     }
                 },
                 onFailure = { exception ->
+                    // Loggear el error real
+                    ErrorHandler.logError(
+                        "SearchViewModel",
+                        "Error al buscar ubicaciones: $query",
+                        exception
+                    )
+                    
+                    // Obtener mensaje de error apropiado para el usuario
+                    val errorMessage = ErrorHandler.getErrorMessage(exception)
+                    
                     _state.update {
                         it.copy(
                             locations = emptyList(),
                             isLoading = false,
-                            error = exception.message ?: "Error al buscar ubicaciones"
+                            error = errorMessage
                         )
                     }
                 }
